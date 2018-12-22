@@ -40,9 +40,9 @@ function bes.color.boot () {
             color.fg  "com"     175 135 175
             color.fg  "text"      0 132 101
             color.fg  "meta"     39 100 170 
-            Coff="\\033[m"
             echo -e "$Cerr warning ${Coff}cannot load colors config file"
         fi
+        Coff="\\033[m"
     fi
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,4 +130,7 @@ function color.load () {
     fi
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-bes.color.boot
+declare -f bes.reg > /dev/null
+if [ $? -eq 0 ]; then
+    bes.reg bes.color
+fi
